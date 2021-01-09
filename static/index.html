@@ -1,0 +1,31 @@
+<html>
+  <head>
+    <title>streamer</title>
+    <style>
+      video {
+        max-width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <video id="video" controls preload="none"></video>
+  </body>
+  <script>
+    var init = function () {
+      var params = new URL(document.location).searchParams;
+      url = params.get("url");
+      if (!url) {
+        url = "https://www.nbc.com/heroes/video/genesis/3743190";
+        url = "https://www.youtube.com/watch?v=Gr_CyzlE0po";
+        // return
+        console.error("no url param. Using", url);
+      }
+      var videoEl = document.querySelector("video");
+      videoEl.setAttribute("src", "stream?url=" + encodeURIComponent(url));
+      videoEl.addEventListener("error", function (evt) {
+        console.error(evt);
+      });
+    };
+    init();
+  </script>
+</html>
