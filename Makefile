@@ -1,5 +1,5 @@
 run:
-	pipenv run uvicorn streamer.web:app
+	pipenv run uvicorn --host 0.0.0.0 --log-level debug streamer.web:app
 
 
 build:
